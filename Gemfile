@@ -12,4 +12,5 @@ group :development, :test do
   gem "rspec"
   gem "rufo"
   gem "solargraph"
+  gem "fakefs"
 end
