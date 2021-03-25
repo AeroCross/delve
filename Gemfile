@@ -11,4 +11,5 @@ group :development, :test do
   gem "pry"
   gem "rspec"
   gem "rubocop"
+  gem "fakefs"
 end
