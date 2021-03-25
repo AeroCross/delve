@@ -18,7 +18,7 @@ class Loader
   end
 
   def json_file
-    JSONLoader.call(path) if can_load_json_file?(path)
+    JSONLoader.call(File.open(path)) if can_load_json_file?(path)
   end
 
   private

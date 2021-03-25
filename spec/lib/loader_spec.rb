@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# See: https://github.com/fakefs/fakefs#fakefs-----typeerror-superclass-mismatch-for-class-file
+require "pp"
 require "byebug"
 require "fakefs/spec_helpers"
 require_relative "../../lib/loader.rb"
@@ -12,19 +14,24 @@ def create_file(name)
   File.open(name, "w+")
 end
 
+def create_json_file(name)
+  json = { foo: "bar" }.to_json
+  create_file(name).write(json)
+end
+
 RSpec.describe Loader do
   include FakeFS::SpecHelpers
   subject { Loader.json_file(path) }
 
   context "when provided a path to a json file" do
     before do
-      create_file(path)
+      create_json_file(path)
     end
 
     let(:path) { "/path/to/file.json" }
 
     it "returns json" do
-      expect(subject).to be(true)
+      expect(subject).to have_key("foo")
     end
   end
 
