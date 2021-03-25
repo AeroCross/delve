@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Requiring pretty-print (pp) at the beginning prevents a TypeError with FakeFS
 # See: https://github.com/fakefs/fakefs#fakefs-----typeerror-superclass-mismatch-for-class-file
 require "pp"
 require "byebug"
