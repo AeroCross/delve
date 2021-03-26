@@ -3,12 +3,11 @@
 
 require "thor"
 require_relative "../lib/loader.rb"
+require_relative "../app/cli/fields.rb"
+require_relative "../app/cli/search.rb"
 
 class Delve < Thor
   package_name "Delve, by Zendesk"
-
-  PROJECT_ROOT = File.expand_path("./../", File.dirname(__FILE__))
-  DATA_PATH = PROJECT_ROOT + "/data/"
 
   def self.exit_on_failure?
     true
@@ -23,25 +22,7 @@ class Delve < Thor
   option :organizations, aliases: "-o", desc: "Show the fields for the \"Organizations\" source"
 
   def fields
-    if options[:users]
-      @users = Loader.json_file(in_data_path("users.json"))
-      puts users.all_keys
-      return
-    end
-
-    if options[:tickets]
-      @tickets = Loader.json_file(in_data_path("tickets.json"))
-      puts tickets.all_keys
-      return
-    end
-
-    if options[:organizations]
-      @organizations = Loader.json_file(in_data_path("organizations.json"))
-      puts organizations.all_keys
-      return
-    end
-
-    show_help("fields")
+    show_help("fields") if CLI::Fields.call(options) == false
   end
 
   desc "search FIELD VALUE --SOURCE", "Searches a FIELD for VALUE in SOURCE"
@@ -50,70 +31,10 @@ class Delve < Thor
   option :organizations, aliases: "-o", desc: "Search within the \"Organizations\" source"
 
   def search(field, value)
-    if options[:users]
-      init_users
-      result = User.new(users.data).find_by(field.to_sym, value)
-
-      if result.empty?
-        puts "Searching for \"#{value}\" in \"#{field}\" in the \"Users\" source returned no results."
-        return
-      end
-
-      puts result
-      return
-    end
-
-    if options[:tickets]
-      init_tickets
-      result = Ticket.new(tickets.data).find_by(field.to_sym, value)
-
-      if result.empty?
-        puts "Searching for \"#{value}\" in \"#{field}\" in the \"Tickets\" source returned no results."
-        return
-      end
-
-      puts result
-      return
-    end
-
-    if options[:organizations]
-      init_organizations
-      result = Organization.new(organizations.data).find_by(field.to_sym, value)
-
-      if result.empty?
-        puts "Searching for \"#{value}\" in \"#{field}\" in the \"Organizations\" source returned no results."
-        return
-      end
-
-      puts result
-      return
-    end
-
-    show_help("search")
+    show_help("search") if CLI::Search.call(field, value, options) == false
   end
 
   private
-
-  private_constant :PROJECT_ROOT, :DATA_PATH
-
-  def in_data_path(name)
-    DATA_PATH + name
-  end
-
-  def init_users
-    @users = Loader.json_file(in_data_path("users.json"))
-    require_relative PROJECT_ROOT + "/app/model/user.rb"
-  end
-
-  def init_tickets
-    @tickets = Loader.json_file(in_data_path("tickets.json"))
-    require_relative PROJECT_ROOT + "/app/model/ticket.rb"
-  end
-
-  def init_organizations
-    @organizations = Loader.json_file(in_data_path("organizations.json"))
-    require_relative PROJECT_ROOT + "/app/model/organization.rb"
-  end
 
   def show_help(command)
     Delve.command_help(Thor::Base.shell.new, command)
