@@ -42,6 +42,7 @@ class Delve < Thor
       return
     end
 
+    show_help("fields")
   end
 
   desc "search FIELD VALUE --SOURCE", "Searches a FIELD for VALUE in SOURCE"
