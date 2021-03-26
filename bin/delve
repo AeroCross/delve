@@ -19,9 +19,9 @@ class Delve < Thor
 
   desc "fields SOURCE", "List all the searchable fields in SOURCE"
   map "-f" => :fields
-  option :users, :aliases => ["-u"], :desc => "Show the fields for the Users dataset"
-  option :tickets, :aliases => ["-t"], :desc => "Show the fields for the Tickets dataset"
-  option :organizations, :aliases => ["-o"], :desc => "Show the fields for the Organizations dataset"
+  option :users, aliases: "-u", desc: "Show the fields for the \"Users\" source"
+  option :tickets, aliases: "-t", desc: "Show the fields for the \"Tickets\" source"
+  option :organizations, aliases: "-o", desc: "Show the fields for the \"Organizations\" source"
 
   def fields
     if options[:users]
