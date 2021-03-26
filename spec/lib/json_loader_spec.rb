@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "byebug"
 require_relative "../../lib/json_loader.rb"
 
 RSpec.describe JSONLoader do
