@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "byebug"
+require "thor"
+require_relative "../lib/loader.rb"
+
+class Delve < Thor
+  package_name "Delve, by Zendesk"
+
+  PROJECT_ROOT = File.expand_path("./../", File.dirname(__FILE__))
+  DATA_PATH = PROJECT_ROOT + "/data/"
+
+  def self.exit_on_failure?
+    true
+  end
+
+  attr_reader :users, :tickets, :organizations
+
+  desc "fields SOURCE", "List all the searchable fields in SOURCE"
+  map "-f" => :fields
+  option :users, :aliases => ["-u"], :desc => "Show the fields for the Users dataset"
+  option :tickets, :aliases => ["-t"], :desc => "Show the fields for the Tickets dataset"
+  option :organizations, :aliases => ["-o"], :desc => "Show the fields for the Organizations dataset"
+
+  def fields
+    if options[:users]
+      @users = Loader.json_file(in_data_path("users.json"))
+      puts users.all_keys
+      return
+    end
+
+    if options[:tickets]
+      @tickets = Loader.json_file(in_data_path("tickets.json"))
+      puts tickets.all_keys
+      return
+    end
+
+    if options[:organizations]
+      @organizations = Loader.json_file(in_data_path("organizations.json"))
+      puts organizations.all_keys
+      return
+    end
+  end
+
+  private
+
+  private_constant :PROJECT_ROOT, :DATA_PATH
+
+  def in_data_path(name)
+    DATA_PATH + name
+  end
+end
+
+Delve.start

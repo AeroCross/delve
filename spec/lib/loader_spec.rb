@@ -3,7 +3,6 @@
 # Requiring pretty-print (pp) at the beginning prevents a TypeError with FakeFS
 # See: https://github.com/fakefs/fakefs#fakefs-----typeerror-superclass-mismatch-for-class-file
 require "pp"
-require "byebug"
 require "fakefs/spec_helpers"
 require_relative "../../lib/loader.rb"
 
@@ -22,7 +21,7 @@ end
 
 RSpec.describe Loader do
   include FakeFS::SpecHelpers
-  subject { Loader.json_file(path) }
+  subject { Loader.json_file(path).data }
 
   context "when provided a path to a json file" do
     before do
@@ -32,7 +31,7 @@ RSpec.describe Loader do
     let(:path) { "/path/to/file.json" }
 
     it "returns json" do
-      expect(subject).to have_key("foo")
+      expect(subject).to have_key(:foo)
     end
   end
 

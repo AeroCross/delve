@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../../model/model.rb"
+require_relative "../../../app/model/model.rb"
 
 RSpec.describe Model do
   let(:data) do
