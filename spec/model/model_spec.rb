@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../model/user.rb"
+require_relative "../../model/model.rb"
 
-RSpec.describe User do
+RSpec.describe Model do
   let(:data) do
     [
       {
@@ -19,7 +19,8 @@ RSpec.describe User do
   end
 
   describe "#find_by" do
-    subject { User.new(data).find_by(key, value) }
+    subject { Model.new(data).find_by(key, value) }
+
     context "when providing a correct key and value" do
       let(:key) { :email }
       let(:value) { "foo@bar.com" }
