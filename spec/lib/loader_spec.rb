@@ -3,7 +3,6 @@
 # Requiring pretty-print (pp) at the beginning prevents a TypeError with FakeFS
 # See: https://github.com/fakefs/fakefs#fakefs-----typeerror-superclass-mismatch-for-class-file
 require "pp"
-require "byebug"
 require "fakefs/spec_helpers"
 require_relative "../../lib/loader.rb"
 
