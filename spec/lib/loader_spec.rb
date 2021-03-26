@@ -22,7 +22,7 @@ end
 
 RSpec.describe Loader do
   include FakeFS::SpecHelpers
-  subject { Loader.json_file(path) }
+  subject { Loader.json_file(path).data }
 
   context "when provided a path to a json file" do
     before do
