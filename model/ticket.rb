@@ -2,5 +2,5 @@
 
 require_relative "./model"
 
-class User < Model
+class Ticket < Model
 end
