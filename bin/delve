@@ -41,6 +41,29 @@ class Delve < Thor
       puts organizations.all_keys
       return
     end
+
+  end
+
+  desc "search FIELD VALUE --SOURCE", "Searches a FIELD for VALUE in SOURCE"
+  option :users, aliases: "-u", desc: "Search within the \"Users\" source"
+  option :tickets, aliases: "-t", desc: "Search within the \"Tickets\" source"
+  option :organizations, aliases: "-o", desc: "Search within the \"Organizations\" source"
+
+  def search(field, value)
+    if options[:users]
+      init_users
+      result = User.new(users.data).find_by(field.to_sym, value)
+
+      if result.empty?
+        puts "Searching for \"#{value}\" in \"#{field}\" in the \"Users\" source returned no results."
+        return
+      end
+
+      puts result
+      return
+    end
+
+    show_help("search")
   end
 
   private
@@ -49,6 +72,15 @@ class Delve < Thor
 
   def in_data_path(name)
     DATA_PATH + name
+  end
+
+  def init_users
+    @users = Loader.json_file(in_data_path("users.json"))
+    require_relative PROJECT_ROOT + "/app/model/user.rb"
+  end
+
+  def show_help(command)
+    Delve.command_help(Thor::Base.shell.new, command)
   end
 end
 
