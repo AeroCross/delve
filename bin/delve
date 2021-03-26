@@ -17,26 +17,29 @@ class Delve < Thor
 
   attr_reader :users, :tickets, :organizations
 
-  desc "fields --DATA_SOURCE", "List all the searchable fields"
+  desc "fields SOURCE", "List all the searchable fields in SOURCE"
   map "-f" => :fields
-  option :organizations
-  option :users
-  option :tickets
+  option :users, :aliases => ["-u"], :desc => "Show the fields for the Users dataset"
+  option :tickets, :aliases => ["-t"], :desc => "Show the fields for the Tickets dataset"
+  option :organizations, :aliases => ["-o"], :desc => "Show the fields for the Organizations dataset"
 
   def fields
     if options[:users]
       @users = Loader.json_file(in_data_path("users.json"))
       puts users.all_keys
+      return
     end
 
     if options[:tickets]
       @tickets = Loader.json_file(in_data_path("tickets.json"))
       puts tickets.all_keys
+      return
     end
 
     if options[:organizations]
       @organizations = Loader.json_file(in_data_path("organizations.json"))
       puts organizations.all_keys
+      return
     end
   end
 
