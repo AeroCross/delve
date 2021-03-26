@@ -32,7 +32,7 @@ RSpec.describe Loader do
     let(:path) { "/path/to/file.json" }
 
     it "returns json" do
-      expect(subject).to have_key("foo")
+      expect(subject).to have_key(:foo)
     end
   end
 
