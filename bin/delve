@@ -64,6 +64,32 @@ class Delve < Thor
       return
     end
 
+    if options[:tickets]
+      init_tickets
+      result = Ticket.new(tickets.data).find_by(field.to_sym, value)
+
+      if result.empty?
+        puts "Searching for \"#{value}\" in \"#{field}\" in the \"Tickets\" source returned no results."
+        return
+      end
+
+      puts result
+      return
+    end
+
+    if options[:organizations]
+      init_organizations
+      result = Organization.new(organizations.data).find_by(field.to_sym, value)
+
+      if result.empty?
+        puts "Searching for \"#{value}\" in \"#{field}\" in the \"Organizations\" source returned no results."
+        return
+      end
+
+      puts result
+      return
+    end
+
     show_help("search")
   end
 
@@ -78,6 +104,16 @@ class Delve < Thor
   def init_users
     @users = Loader.json_file(in_data_path("users.json"))
     require_relative PROJECT_ROOT + "/app/model/user.rb"
+  end
+
+  def init_tickets
+    @tickets = Loader.json_file(in_data_path("tickets.json"))
+    require_relative PROJECT_ROOT + "/app/model/ticket.rb"
+  end
+
+  def init_organizations
+    @organizations = Loader.json_file(in_data_path("organizations.json"))
+    require_relative PROJECT_ROOT + "/app/model/organization.rb"
   end
 
   def show_help(command)
