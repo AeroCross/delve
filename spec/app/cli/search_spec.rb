@@ -18,12 +18,14 @@ RSpec.describe CLI::Search do
         email: "mario@zendesk.com",
         active: true,
         roles: ["developer", "user"],
+        additional_notes: "",
       },
       {
         id: 2,
         name: "Paul",
         active: false,
         roles: ["guest"],
+        additional_notes: "",
       },
     ]
   end
@@ -86,6 +88,15 @@ RSpec.describe CLI::Search do
 
       it "returns results that have been found" do
         expect(subject).to eq([json[1]])
+      end
+    end
+
+    context "when the value is empty" do
+      let(:field) { "additional_notes" }
+      let(:value) { "" }
+
+      it "returns results that have been found" do
+        expect(subject).to eq([json[0], json[1]])
       end
     end
   end
