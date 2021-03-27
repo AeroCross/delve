@@ -7,5 +7,14 @@ module CLI
     def data_path
       File.expand_path("./../../", File.dirname(__FILE__)) + "/data/"
     end
+
+    def cast(value)
+      return value if (value.instance_of?(Array))
+      return value.to_i if (value.respond_to?(:to_i) && value.to_i.to_s == value)
+      return value.to_sym if (value.class == Symbol || (value.respond_to?(:start_with?) && value.start_with?(":")))
+      return true if value.downcase == "true"
+      return false if value.downcase == "false"
+      return value
+    end
   end
 end
