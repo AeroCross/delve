@@ -17,6 +17,18 @@ RSpec.describe User::AssociationBuilder do
           employees: 1,
         },
       ],
+      users: [
+        {
+          _id: 1,
+          name: "Mario",
+          organization_id: 2,
+        },
+        {
+          _id: 2,
+          name: "Paul",
+          organization_id: 1,
+        },
+      ],
       tickets: [
         {
           _id: "foo-bar",
@@ -24,6 +36,7 @@ RSpec.describe User::AssociationBuilder do
           status: "open",
           assignee_id: 2,
           submitter_id: 1,
+          organization_id: 1,
         },
         {
           _id: "baz-qux",
@@ -31,6 +44,7 @@ RSpec.describe User::AssociationBuilder do
           status: "open",
           assignee_id: 3,
           submitter_id: 1,
+          organization_id: 2,
         },
       ],
     }
@@ -49,10 +63,20 @@ RSpec.describe User::AssociationBuilder do
   describe "#call" do
     subject { User::AssociationBuilder.call(result, data) }
 
-    it "returns the associated data to the user" do
-      expect(subject.keys).to include(:organizations, :tickets)
-      expect(subject[:organizations][0]).to include(name: "Rush B")
-      expect(subject[:tickets][0]).to include(title: "All is literally actually non-ironically on fire")
+    context "when provided the relevant data" do
+      it "returns the associated data to the user" do
+        expect(subject.keys).to include(:organizations, :tickets)
+        expect(subject[:organizations][0]).to include(name: "Rush B")
+        expect(subject[:tickets][0]).to include(title: "All is literally actually non-ironically on fire")
+      end
+    end
+
+    context "when the result set is empty" do
+      let(:result) { }
+
+      it "returns an empty set" do
+        expect(subject).to be_empty
+      end
     end
   end
 end
