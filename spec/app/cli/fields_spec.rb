@@ -3,9 +3,8 @@
 require_relative "../../../app/cli/fields.rb"
 
 RSpec.describe CLI::Fields do
-  let(:options) do
-    { users: true }
-  end
+  let(:source) { "users" }
+  let(:options) { {} }
 
   let(:json) do
     [
@@ -32,7 +31,7 @@ RSpec.describe CLI::Fields do
   end
 
   describe "#call" do
-    subject { CLI::Fields.call(options) }
+    subject { CLI::Fields.call(source, options) }
 
     context "when provided with a matching option" do
       it "returns a list of fields" do
@@ -45,8 +44,8 @@ RSpec.describe CLI::Fields do
         { entities: true }
       end
 
-      it "return false" do
-        expect(subject).to be false
+      it "ignores it" do
+        expect(subject).to eq(%i(id name email active roles))
       end
     end
   end

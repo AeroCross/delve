@@ -3,41 +3,43 @@
 require "thor"
 require_relative "./command"
 require_relative "../../lib/loader.rb"
+require_relative "../../app/model/user.rb"
+require_relative "../../app/model/ticket.rb"
+require_relative "../../app/model/organization.rb"
 
 module CLI
   class Search
     include Command
 
-    attr_reader :field, :value, :options, :data
+    attr_reader :source, :field, :value, :options, :data
 
-    def self.call(field, value, options)
-      new(field, value, options).search
+    def self.call(source, field, value, options)
+      new(source, field, value, options).search
     end
 
-    def initialize(field, value, options)
+    def initialize(source, field, value, options)
+      @source = source
       @field = field
       @value = value
       @options = options
     end
 
     def search
-      source = if options[:users]
-          require_relative "../../app/model/user.rb"
-          { model: ::User, name: "users" }
-        elsif options[:tickets]
-          require_relative "../../app/model/ticket.rb"
-          { model: ::Ticket, name: "tickets" }
-        elsif options[:organizations]
-          require_relative "../../app/model/organization.rb"
-          { model: ::Organization, name: "organizations" }
+      return false unless source_valid
+
+      model = case source
+        when "users"
+          ::User
+        when "tickets"
+          ::Ticket
+        when "organizations"
+          ::Organization
         else
           nil
         end
 
-      return false if source.nil?
-
-      @data = Loader.json_file(file_to_load(source[:name]))
-      source[:model].new(data.data).find_by(field.to_sym, cast(value))
+      @data = Loader.json_file(file_to_load(source))
+      model.new(data.data).find_by(field.to_sym, cast(value))
     end
 
     private

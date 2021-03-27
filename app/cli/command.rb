@@ -16,5 +16,9 @@ module CLI
       return false if value.downcase == "false"
       return value
     end
+
+    def source_valid
+      %w(users tickets organizations).include?(source)
+    end
   end
 end
