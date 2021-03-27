@@ -4,7 +4,9 @@
 require "thor"
 require_relative "../lib/loader.rb"
 require_relative "../app/cli/fields.rb"
+require_relative "../app/cli/fields/renderer.rb"
 require_relative "../app/cli/search.rb"
+require_relative "../app/cli/search/renderer.rb"
 
 class Delve < Thor
   package_name "Delve, by Zendesk"
@@ -15,23 +17,40 @@ class Delve < Thor
 
   attr_reader :users, :tickets, :organizations
 
-  desc "fields SOURCE", "List all the searchable fields in SOURCE"
+  desc "fields --SOURCE", "List all the searchable fields in SOURCE"
   map "-f" => :fields
   option :users, aliases: "-u", desc: "Show the fields for the \"Users\" source"
   option :tickets, aliases: "-t", desc: "Show the fields for the \"Tickets\" source"
   option :organizations, aliases: "-o", desc: "Show the fields for the \"Organizations\" source"
+  option :raw, aliases: "-r", desc: "Use machine-parseable output"
 
   def fields
-    show_help("fields") if CLI::Fields.call(options) == false
+    results = CLI::Fields.call(options)
+
+    unless results
+      show_help("fields")
+      return
+    end
+
+    CLI::Fields::Renderer.call(results, options)
   end
 
   desc "search FIELD VALUE --SOURCE", "Searches a FIELD for VALUE in SOURCE"
+  map "-s" => :search
   option :users, aliases: "-u", desc: "Search within the \"Users\" source"
   option :tickets, aliases: "-t", desc: "Search within the \"Tickets\" source"
   option :organizations, aliases: "-o", desc: "Search within the \"Organizations\" source"
+  option :raw, aliases: "-r", desc: "Use machine-parseable output"
 
   def search(field, value)
-    show_help("search") if CLI::Search.call(field, value, options) == false
+    results = CLI::Search.call(field, value, options)
+
+    unless results
+      show_help("search")
+      return
+    end
+
+    CLI::Search::Renderer.call(results, options)
   end
 
   private
