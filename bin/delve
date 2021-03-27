@@ -1,15 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "byebug"
 require "thor"
 require_relative "../lib/loader.rb"
+require_relative "../app/cli/fields.rb"
+require_relative "../app/cli/search.rb"
 
 class Delve < Thor
   package_name "Delve, by Zendesk"
-
-  PROJECT_ROOT = File.expand_path("./../", File.dirname(__FILE__))
-  DATA_PATH = PROJECT_ROOT + "/data/"
 
   def self.exit_on_failure?
     true
@@ -19,36 +17,27 @@ class Delve < Thor
 
   desc "fields SOURCE", "List all the searchable fields in SOURCE"
   map "-f" => :fields
-  option :users, :aliases => ["-u"], :desc => "Show the fields for the Users dataset"
-  option :tickets, :aliases => ["-t"], :desc => "Show the fields for the Tickets dataset"
-  option :organizations, :aliases => ["-o"], :desc => "Show the fields for the Organizations dataset"
+  option :users, aliases: "-u", desc: "Show the fields for the \"Users\" source"
+  option :tickets, aliases: "-t", desc: "Show the fields for the \"Tickets\" source"
+  option :organizations, aliases: "-o", desc: "Show the fields for the \"Organizations\" source"
 
   def fields
-    if options[:users]
-      @users = Loader.json_file(in_data_path("users.json"))
-      puts users.all_keys
-      return
-    end
+    show_help("fields") if CLI::Fields.call(options) == false
+  end
 
-    if options[:tickets]
-      @tickets = Loader.json_file(in_data_path("tickets.json"))
-      puts tickets.all_keys
-      return
-    end
+  desc "search FIELD VALUE --SOURCE", "Searches a FIELD for VALUE in SOURCE"
+  option :users, aliases: "-u", desc: "Search within the \"Users\" source"
+  option :tickets, aliases: "-t", desc: "Search within the \"Tickets\" source"
+  option :organizations, aliases: "-o", desc: "Search within the \"Organizations\" source"
 
-    if options[:organizations]
-      @organizations = Loader.json_file(in_data_path("organizations.json"))
-      puts organizations.all_keys
-      return
-    end
+  def search(field, value)
+    show_help("search") if CLI::Search.call(field, value, options) == false
   end
 
   private
 
-  private_constant :PROJECT_ROOT, :DATA_PATH
-
-  def in_data_path(name)
-    DATA_PATH + name
+  def show_help(command)
+    Delve.command_help(Thor::Base.shell.new, command)
   end
 end
 
