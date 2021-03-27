@@ -9,6 +9,8 @@ class Model
   end
 
   def where(key, value)
+    return [] unless data
+
     @result = data.select do |entry|
       if entry[key].instance_of?(String)
         entry[key].downcase == value.downcase
