@@ -23,35 +23,37 @@ RSpec.describe Loader do
   include FakeFS::SpecHelpers
   subject { Loader.json_file(path).data }
 
-  context "when provided a path to a json file" do
-    before do
-      create_json_file(path)
+  describe "#call" do
+    context "when provided a path to a json file" do
+      before do
+        create_json_file(path)
+      end
+
+      let(:path) { "/path/to/file.json" }
+
+      it "returns json" do
+        expect(subject).to have_key(:foo)
+      end
     end
 
-    let(:path) { "/path/to/file.json" }
+    context "when provided a path to a non-json file" do
+      before do
+        create_file(path)
+      end
 
-    it "returns json" do
-      expect(subject).to have_key(:foo)
+      let(:path) { "/path/to/file.xml" }
+
+      it "errors out" do
+        expect { subject }.to raise_error(Loader::InvalidFileTypeError)
+      end
     end
-  end
 
-  context "when provided a path to a non-json file" do
-    before do
-      create_file(path)
-    end
+    context "when provided an invalid path" do
+      let(:path) { "this isn't actually a path" }
 
-    let(:path) { "/path/to/file.xml" }
-
-    it "errors out" do
-      expect { subject }.to raise_error(Loader::InvalidFileTypeError)
-    end
-  end
-
-  context "when provided an invalid path" do
-    let(:path) { "this isn't actually a path" }
-
-    it "errors out" do
-      expect { subject }.to raise_error(Loader::InvalidPathError)
+      it "errors out" do
+        expect { subject }.to raise_error(Loader::InvalidPathError)
+      end
     end
   end
 end

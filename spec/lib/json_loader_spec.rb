@@ -19,10 +19,12 @@ RSpec.describe JSONLoader do
     ].to_json
   end
 
-  context "when valid JSON is passed to it" do
-    it "loads a ruby data structure" do
-      expect(subject.length).to eq(2)
-      expect(subject[0]).to eq({ a: "foo", b: "bar", c: "baz" })
+  describe "#call" do
+    context "when valid JSON is passed to it" do
+      it "loads a ruby data structure" do
+        expect(subject.length).to eq(2)
+        expect(subject[0]).to eq({ a: "foo", b: "bar", c: "baz" })
+      end
     end
   end
 
