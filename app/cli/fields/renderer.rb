@@ -26,7 +26,7 @@ module CLI
         end
 
         if options[:raw]
-          puts data
+          puts data.to_json
           return
         end
 
