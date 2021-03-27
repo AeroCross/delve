@@ -10,6 +10,7 @@ require_relative "../app/cli/search/renderer.rb"
 
 class Delve < Thor
   package_name "Delve, by Zendesk"
+  class_option :raw, aliases: "-r", desc: "Use machine-parseable output"
 
   def self.exit_on_failure?
     true
@@ -19,7 +20,6 @@ class Delve < Thor
 
   desc "fields --SOURCE [users | tickets | organizations]", "List all the searchable fields in SOURCE [users | tickets | organizations]"
   map "-f" => :fields
-  option :raw, aliases: "-r", desc: "Use machine-parseable output"
 
   def fields(source)
     results = CLI::Fields.call(source, options)
@@ -34,7 +34,6 @@ class Delve < Thor
 
   desc "search SOURCE [users | tickets | organizations] FIELD VALUE", "Searches a FIELD for VALUE in SOURCE [users | tickets | organizations]"
   map "-s" => :search
-  option :raw, aliases: "-r", desc: "Use machine-parseable output"
 
   def search(source, field, value)
     results = CLI::Search.call(source, field, value, options)
