@@ -37,7 +37,7 @@ module CLI
       return false if source.nil?
 
       @data = Loader.json_file(file_to_load(source[:name]))
-      result = source[:model].new(data.data).find_by(field.to_sym, value)
+      result = source[:model].new(data.data).find_by(field.to_sym, cast(value))
 
       if result.empty?
         puts "No results found"

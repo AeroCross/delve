@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "../../spec_helper.rb"
 require_relative "../../../app/cli/search.rb"
 
 RSpec.describe CLI::Search do
@@ -49,6 +50,42 @@ RSpec.describe CLI::Search do
 
       it "returns false" do
         expect(subject).to be false
+      end
+    end
+
+    context "when the value matches with case insensitivity" do
+      let(:field) { "name" }
+      let(:value) { "mario" }
+
+      it "reutnrs results that have been found" do
+        expect(subject).to eq([json[0]])
+      end
+    end
+
+    context "when the value is a number" do
+      let(:field) { "id" }
+      let(:value) { "2" }
+
+      it "returns results that have been found" do
+        expect(subject).to eq([json[1]])
+      end
+    end
+
+    context "when the value is a boolean" do
+      let(:field) { "active" }
+      let(:value) { "true" }
+
+      it "returns results that have been found" do
+        expect(subject).to eq([json[0]])
+      end
+    end
+
+    context "when the value is an array" do
+      let(:field) { "roles" }
+      let(:value) { "guest" }
+
+      it "returns results that have been found" do
+        expect(subject).to eq([json[1]])
       end
     end
   end
