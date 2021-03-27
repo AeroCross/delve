@@ -35,9 +35,8 @@ RSpec.describe CLI::Fields do
     subject { CLI::Fields.call(options) }
 
     context "when provided with a matching option" do
-      it "shows a list of fields" do
-        expect(STDOUT).to receive(:puts).with(%i(id name email active roles))
-        subject
+      it "returns a list of fields" do
+        expect(subject).to eq(%i(id name email active roles))
       end
     end
 

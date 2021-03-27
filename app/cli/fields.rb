@@ -32,9 +32,9 @@ module CLI
       return false if source.nil?
 
       @data = Loader.json_file(file_to_load(source))
-      puts data.all_keys
 
-      return true
+      puts data.all_keys
+      return data.all_keys
     end
 
     private
