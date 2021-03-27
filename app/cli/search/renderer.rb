@@ -7,6 +7,7 @@ module CLI
   class Search
     class Renderer
       include Formatter
+
       attr_reader :data, :options
 
       def self.call(data, options)
