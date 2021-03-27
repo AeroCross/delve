@@ -62,6 +62,9 @@ module CLI
       when "tickets"
         require_relative "../../app/model/ticket/association_builder.rb"
         return Ticket::AssociationBuilder.call(result, data)
+      when "organizations"
+        require_relative "../../app/model/organization/association_builder.rb"
+        return Organization::AssociationBuilder.call(result, data)
       end
     end
 
