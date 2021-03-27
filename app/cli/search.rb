@@ -4,7 +4,6 @@ require "thor"
 require_relative "./command"
 require_relative "../../lib/loader.rb"
 require_relative "../../app/model/user.rb"
-require_relative "../../app/model/user/association_builder.rb"
 require_relative "../../app/model/ticket.rb"
 require_relative "../../app/model/organization.rb"
 
@@ -58,7 +57,11 @@ module CLI
     def build_associations(result)
       case source
       when "users"
+        require_relative "../../app/user/ticket/association_builder.rb"
         return User::AssociationBuilder.call(result, data)
+      when "tickets"
+        require_relative "../../app/model/ticket/association_builder.rb"
+        return Ticket::AssociationBuilder.call(result, data)
       end
     end
 

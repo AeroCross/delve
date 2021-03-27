@@ -58,6 +58,9 @@ module CLI
         when "users"
           require_relative "./renderer/user_association_renderer.rb"
           UserAssociationRenderer.call(data)
+        when "tickets"
+          require_relative "./renderer/ticket_association_renderer.rb"
+          TicketAssociationRenderer.call(data)
         end
       end
     end
