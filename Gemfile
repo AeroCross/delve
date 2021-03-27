@@ -6,6 +6,8 @@ source "https://rubygems.org"
 
 gem "bundler"
 gem "thor"
+gem "tty-table"
+gem "paint"
 
 group :development, :test do
   gem "byebug"

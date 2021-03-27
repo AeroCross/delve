@@ -15,9 +15,12 @@ GEM
       kramdown (~> 2.0)
     nokogiri (1.11.2-x86_64-darwin)
       racc (~> 1.4)
+    paint (2.2.1)
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
     racc (1.5.2)
     rainbow (3.0.0)
     regexp_parser (2.1.1)
@@ -64,9 +67,21 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
+    strings (0.2.1)
+      strings-ansi (~> 0.2)
+      unicode-display_width (>= 1.5, < 3.0)
+      unicode_utils (~> 1.4)
+    strings-ansi (0.2.0)
     thor (1.1.0)
     tilt (2.0.10)
+    tty-color (0.6.0)
+    tty-screen (0.8.1)
+    tty-table (0.12.0)
+      pastel (~> 0.8)
+      strings (~> 0.2.0)
+      tty-screen (~> 0.8)
     unicode-display_width (2.0.0)
+    unicode_utils (1.4.0)
     yard (0.9.26)
 
 PLATFORMS
@@ -76,10 +91,12 @@ DEPENDENCIES
   bundler
   byebug
   fakefs
+  paint
   rspec
   rufo
   solargraph
   thor
+  tty-table
 
 RUBY VERSION
    ruby 2.7.2p137
