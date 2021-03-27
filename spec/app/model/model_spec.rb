@@ -18,8 +18,8 @@ RSpec.describe Model do
     ]
   end
 
-  describe "#find_by" do
-    subject { Model.new(data).find_by(key, value) }
+  describe "#where" do
+    subject { Model.new(data).where(key, value) }
 
     context "when providing a matching key and value" do
       let(:key) { :email }

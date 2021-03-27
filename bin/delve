@@ -34,6 +34,7 @@ class Delve < Thor
 
   desc "search SOURCE [users | tickets | organizations] FIELD VALUE", "Searches a FIELD for VALUE in SOURCE"
   map "-s" => :search
+  option :associations, aliases: "-a", type: :boolean, desc: "Output data associated with the results. Only works with Primary Keys.", default: true
 
   def search(source, field, value)
     results = CLI::Search.call(source, field, value, options)

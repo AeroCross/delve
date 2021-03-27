@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
 class Model
-  attr_reader :data
+  attr_reader :data, :result
 
   def initialize(data)
     @data = data
+    @result = nil
   end
 
-  def find_by(key, value)
-    data.select do |entry|
+  def where(key, value)
+    return [] unless data
+
+    @result = data.select do |entry|
       if entry[key].instance_of?(String)
         entry[key].downcase == value.downcase
       elsif entry[key].instance_of?(Array)
@@ -18,5 +21,17 @@ class Model
         entry[key] == value
       end
     end
+  end
+
+  def primary_key
+    raise NotImplementedError
+  end
+
+  def unique_keys
+    raise NotImplementedError
+  end
+
+  def foreign_keys
+    raise NotImplementedError
   end
 end

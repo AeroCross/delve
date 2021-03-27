@@ -11,5 +11,9 @@ module CLI
     def format_field(text)
       Paint[text, :cyan]
     end
+
+    def format_separator(text)
+      Paint["\n\n#{text}\n", :yellow]
+    end
   end
 end

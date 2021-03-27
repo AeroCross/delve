@@ -40,7 +40,7 @@ RSpec.describe CLI::Search do
 
     context "when provided with correct values" do
       it "returns results that have been found" do
-        expect(subject).to eq([json[0]])
+        expect(subject).to eq(results: [json[0]], source: "users")
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe CLI::Search do
       end
 
       it "ignores it" do
-        expect(subject).to eq([json[0]])
+        expect(subject).to eq(results: [json[0]], source: "users")
       end
     end
 
@@ -59,7 +59,7 @@ RSpec.describe CLI::Search do
       let(:value) { "mario" }
 
       it "reutnrs results that have been found" do
-        expect(subject).to eq([json[0]])
+        expect(subject).to eq(results: [json[0]], source: "users")
       end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe CLI::Search do
       let(:value) { "2" }
 
       it "returns results that have been found" do
-        expect(subject).to eq([json[1]])
+        expect(subject).to eq(results: [json[1]], source: "users")
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe CLI::Search do
       let(:value) { "true" }
 
       it "returns results that have been found" do
-        expect(subject).to eq([json[0]])
+        expect(subject).to eq(results: [json[0]], source: "users")
       end
     end
 
@@ -86,7 +86,7 @@ RSpec.describe CLI::Search do
       let(:value) { "guest" }
 
       it "returns results that have been found" do
-        expect(subject).to eq([json[1]])
+        expect(subject).to eq(results: [json[1]], source: "users")
       end
     end
 
@@ -95,7 +95,7 @@ RSpec.describe CLI::Search do
       let(:value) { "" }
 
       it "returns results that have been found" do
-        expect(subject).to eq([json[0], json[1]])
+        expect(subject).to eq(results: [json[0], json[1]], source: "users")
       end
     end
   end
