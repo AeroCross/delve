@@ -17,6 +17,8 @@ class User
     end
 
     def build
+      return {} unless result
+
       output = {}
 
       user = result[0]
