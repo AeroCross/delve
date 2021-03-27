@@ -8,10 +8,10 @@ class User < Model
   end
 
   def unique_keys
-    %w(_id)
+    %i(_id url)
   end
 
   def foreign_keys
-    %w(organization_id)
+    %i(organization_id)
   end
 end
