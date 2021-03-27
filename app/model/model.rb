@@ -20,4 +20,16 @@ class Model
       end
     end
   end
+
+  def primary_key
+    raise NotImplementedError
+  end
+
+  def unique_keys
+    raise NotImplementedError
+  end
+
+  def foreign_keys
+    raise NotImplementedError
+  end
 end
