@@ -6,9 +6,8 @@ require_relative "../../../app/cli/search.rb"
 RSpec.describe CLI::Search do
   let(:field) { "name" }
   let(:value) { "Mario" }
-  let(:options) do
-    { users: true }
-  end
+  let(:source) { "users" }
+  let(:options) { {} }
 
   let(:json) do
     [
@@ -37,7 +36,7 @@ RSpec.describe CLI::Search do
   end
 
   describe "#call" do
-    subject { CLI::Search.call(field, value, options) }
+    subject { CLI::Search.call(source, field, value, options) }
 
     context "when provided with correct values" do
       it "returns results that have been found" do
@@ -50,8 +49,8 @@ RSpec.describe CLI::Search do
         { entities: true }
       end
 
-      it "returns false" do
-        expect(subject).to be false
+      it "ignores it" do
+        expect(subject).to eq([json[0]])
       end
     end
 
