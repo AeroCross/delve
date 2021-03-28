@@ -146,6 +146,17 @@ allowed me to focus and dedicate more time to what was really important for eval
   of our own tests in CI (like using `vcr` for example, to reduce test times and increase reliability without using
   "the real thing") so it felt like I would be doing the same, without undermining the challenge's goal.
 
+## A Note on Git Commits
+
+You may have noticed that the entirety of the application has a bunch of git commits, some with minor fixes.
+
+During the development of a production feature, I would have kept the philosophy of "the commit message should show the
+**why** of a change, and the changeset shows the **what**", but I would have used more interactive rebasing to remove
+or squash minor stuff.
+
+For example, you wouldn't know that I ever committed `require "byebug"` a million times, but I think it is important
+for reviewers to be with me throughout the journey of developing the application, and see it evolve over time.
+
 [thor]: https://github.com/erikhuda/thor
 [optionparser]: https://ruby-doc.org/stdlib-2.7.2/libdoc/optparse/rdoc/OptionParser.html
 [tty-table]: https://github.com/piotrmurach/tty-table
