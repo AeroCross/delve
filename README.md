@@ -42,7 +42,7 @@ If this project needs to be run under Windows, using the [Windows Subsystem for 
 If you're using a Unix-like system, you probably have Ruby installed. To verify:
 
 ```bash
-❯ ruby -v
+ruby -v
 ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin19]
 ```
 
@@ -371,7 +371,7 @@ bundle exec rspec
   <summary>Expected results</summary>
 
   ```bash
-  ❯ rspec
+  rspec
 
 CLI::Fields
   #call
