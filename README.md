@@ -1,8 +1,12 @@
-# Delve
+<div style="text-align:center">
+  <img src="public/logo.png" width="320" />
 
-Dig deep into data.
+  By Zendesk
 
------
+  _Dig deep into data_
+  
+  ---
+</div>
 
 ## Design Principles
 

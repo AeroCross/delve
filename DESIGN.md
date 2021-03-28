@@ -1,4 +1,3 @@
-
 ## Why go for non-interactive mode?
 
 The single biggest design decision around this application is going directly against what was shown as an example
@@ -153,6 +152,20 @@ or squash minor stuff.
 
 For example, you wouldn't know that I ever committed `require "byebug"` a million times, but I think it is important
 for reviewers to be with me throughout the journey of developing the application, and see it evolve over time.
+
+## That logo and that name though?
+
+I **loved** [Brandland](https://brandland.zendesk.com/). I am a sucker for design systems, so I thought of giving it a go.
+
+The logo is meant to represent two interconnected things:
+
+1. The left and right shapes: a pickaxe (the rightmost part is the axe bit, the leftmost is the pick bit)
+2. The space in the middle: a mining shaft, where you _delve_ into
+
+I couldn't find a product that uses [Daphne](https://brandland.zendesk.com/color) (#CE9FB7) in their logo so I thought
+that would be the a good choice.
+
+The name "Delve" name is inspired by my favourite [Path of Exile game mode](https://pathofexile.fandom.com/wiki/Delve).
 
 [thor]: https://github.com/erikhuda/thor
 [optionparser]: https://ruby-doc.org/stdlib-2.7.2/libdoc/optparse/rdoc/OptionParser.html
