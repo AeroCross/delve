@@ -30,9 +30,7 @@ delve search users _id 25 --raw | jid
 <details>
   <summary>See demo</summary>
   
-  <video width="852" controls>
-    <source src="https://user-images.githubusercontent.com/942337/112741855-d4258700-8fd4-11eb-8f74-fcf47c191dd5.mp4" type="video/mp4">
-  </video>
+  ![jid demo](https://user-images.githubusercontent.com/942337/112741855-d4258700-8fd4-11eb-8f74-fcf47c191dd5.mp4)
   
   <a href="https://user-images.githubusercontent.com/942337/112741753-05518780-8fd4-11eb-8ff3-07b5bab67139.mov">Download demo</a>
   
@@ -48,9 +46,7 @@ delve search users email "byersestrada@flotonic.com" -r | jsonpp > user.json && 
 <details>
   <summary>See demo</summary>
   
-  <video width="852" controls>
-    <source src="https://user-images.githubusercontent.com/942337/112741854-cc65e280-8fd4-11eb-9107-64e27f124256.mp4" type="video/mp4">
-  </video>
+  ![dropbox demo](https://user-images.githubusercontent.com/942337/112741854-cc65e280-8fd4-11eb-9107-64e27f124256.mp4)
   
   <a href="https://user-images.githubusercontent.com/942337/112741732-e226d800-8fd3-11eb-8885-ae610b310a2d.mov">Download demo</a>
   
