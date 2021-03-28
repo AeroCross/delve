@@ -1,9 +1,23 @@
-<img src="public/logo.png" width="320" />
-<br />
+<p align="center">
+<img src="public/logo.png" width="320" alt="Logo" />
+  <h2 align="center">by Zendesk</h1>
+</p>
 
-_By Zendesk_
+<details open="open">
+  <summary>Table of Contents</summary>
 
-------
+  - [Design Principles](#design-principles)
+    - [DESIGN.md](./DESIGN.md)
+  - [Goals](#goals)
+  - [Requirements](#requirements)
+    - [Getting Started](#getting-started)
+    - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+  - [Using the Application](#using-the-application)
+  - [Testing](#testing)
+  - [Formatting](#formatting)
+
+</details>
 
 ## Design Principles
 
@@ -55,8 +69,6 @@ instructions below.
 ℹ️ These installation instructions assume you're running Mac OS. Installing on a Unix-like system shouldn't be too
 different.
 
-### Prerequisites
-
 ℹ️ If you have Ruby installed, you can skip to the [next section](#running-the-application).
 
 1. Install [`brew`][brew]
@@ -69,7 +81,7 @@ different.
 5. Install Ruby: `rbenv install 2.7.2`
 6. Confirm Ruby is installed and running: `ruby --version`
 
-#### Running the application
+## Running the application
 
 ```bash
 # clone the repo
