@@ -1,5 +1,6 @@
 <img src="public/logo.png" width="320" />
 <br />
+
 _By Zendesk_
 
 ------
