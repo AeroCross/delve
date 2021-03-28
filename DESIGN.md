@@ -157,7 +157,7 @@ for reviewers to be with me throughout the journey of developing the application
 
 I **loved** [Brandland](https://brandland.zendesk.com/). I am a sucker for design systems, so I thought of giving it a go.
 
-The logo is meant to resemble a a pickaxe (the leftmost is the pick bit, the rightmost part is the axe bit).
+The logo is meant to resemble a a pickaxe — a tool that allows you to _delve_ into a mine of data.
 
 I couldn't find a product that uses [Daphne](https://brandland.zendesk.com/color) (#CE9FB7) in their logo so I thought
 that would be the a good choice.
