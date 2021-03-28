@@ -85,7 +85,7 @@ different.
 
 ```bash
 # clone the repo
-`git clone git@github.com:AeroCross/delve.git`
+git clone git@github.com:AeroCross/delve.git
 
 # switch to the newly created directory
 cd delve
