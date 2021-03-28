@@ -29,6 +29,11 @@ delve search users _id 25 --raw | jid
 
 <details>
   <summary>See demo</summary>
+  
+  <video width="852" controls autoplay>
+    <source src="https://user-images.githubusercontent.com/942337/112741753-05518780-8fd4-11eb-8ff3-07b5bab67139.mov" type="video/mp4">
+  </video>
+
 </details>
 
 Want to save a file with the results of your query, but you want it to be prettified with `jsonpp` first and then saved
@@ -40,6 +45,11 @@ delve search users email "byersestrada@flotonic.com" -r | jsonpp > user.json && 
 
 <details>
   <summary>See demo</summary>
+  
+  <video width="852" controls autoplay>
+    <source src="https://user-images.githubusercontent.com/942337/112741732-e226d800-8fd3-11eb-8885-ae610b310a2d.mov" type="video/mp4">
+  </video>
+  
 </details>
 
 (Please don't actually do this if you're dealing with PII or a GDPR data portability request!)
