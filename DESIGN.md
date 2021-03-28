@@ -27,14 +27,7 @@ if you have [`jid`][jid] installed:
 delve search users _id 25 --raw | jid
 ```
 
-<details>
-  <summary>See demo</summary>
-  
-  ![jid demo](https://user-images.githubusercontent.com/942337/112741855-d4258700-8fd4-11eb-8f74-fcf47c191dd5.mp4)
-  
-  <a href="https://user-images.githubusercontent.com/942337/112741753-05518780-8fd4-11eb-8ff3-07b5bab67139.mov">Download demo</a>
-  
-</details>
+<a href="https://www.dropbox.com/s/c0yqstr22e1p638/jid-demo.mov?dl=0">See demo</a>
 
 Want to save a file with the results of your query, but you want it to be prettified with `jsonpp` first and then saved
 to Dropox so you can share it with your colleagues because that's how you work?
@@ -43,14 +36,7 @@ to Dropox so you can share it with your colleagues because that's how you work?
 delve search users email "byersestrada@flotonic.com" -r | jsonpp > user.json && cp ./user.json ~/Dropbox/user.json
 ```
 
-<details>
-  <summary>See demo</summary>
-  
-  ![dropbox demo](https://user-images.githubusercontent.com/942337/112741854-cc65e280-8fd4-11eb-9107-64e27f124256.mp4)
-  
-  <a href="https://user-images.githubusercontent.com/942337/112741732-e226d800-8fd3-11eb-8885-ae610b310a2d.mov">Download demo</a>
-  
-</details>
+<a href="https://www.dropbox.com/s/r5ht6qmc108i2mu/dropbox-demo.mov?dl=0">See demo</a>
 
 (Please don't actually do this if you're dealing with PII or a GDPR data portability request!)
 
