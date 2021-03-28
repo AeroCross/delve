@@ -27,9 +27,7 @@ if you have [`jid`][jid] installed:
 delve search users _id 25 --raw | jid
 ```
 
-<details>
-  <summary>See demo</summary>
-</details>
+<a href="https://www.dropbox.com/s/c0yqstr22e1p638/jid-demo.mov?dl=0">See demo</a>
 
 Want to save a file with the results of your query, but you want it to be prettified with `jsonpp` first and then saved
 to Dropox so you can share it with your colleagues because that's how you work?
@@ -38,13 +36,12 @@ to Dropox so you can share it with your colleagues because that's how you work?
 delve search users email "byersestrada@flotonic.com" -r | jsonpp > user.json && cp ./user.json ~/Dropbox/user.json
 ```
 
-<details>
-  <summary>See demo</summary>
-</details>
+<a href="https://www.dropbox.com/s/r5ht6qmc108i2mu/dropbox-demo.mov?dl=0">See demo</a>
 
 (Please don't actually do this if you're dealing with PII or a GDPR data portability request!)
 
-The possibilities are, virtually, endless.
+This also allows you to use this program through `cron`, or CI, be invoked by other GUI or CLI applications and use the
+result, among many other things. The possibilities are, virtually, endless.
 
 ## Why Ruby 2, and not 3?
 
@@ -145,6 +142,17 @@ allowed me to focus and dedicate more time to what was really important for eval
   - In a professional, production environment, we often use tools like this to ensure we reduce the performance impact
   of our own tests in CI (like using `vcr` for example, to reduce test times and increase reliability without using
   "the real thing") so it felt like I would be doing the same, without undermining the challenge's goal.
+
+## A Note on Git Commits
+
+You may have noticed that the entirety of the application has a bunch of git commits, some with minor fixes.
+
+During the development of a production feature, I would have kept the philosophy of "the commit message should show the
+**why** of a change, and the changeset shows the **what**", but I would have used more interactive rebasing to remove
+or squash minor stuff.
+
+For example, you wouldn't know that I ever committed `require "byebug"` a million times, but I think it is important
+for reviewers to be with me throughout the journey of developing the application, and see it evolve over time.
 
 [thor]: https://github.com/erikhuda/thor
 [optionparser]: https://ruby-doc.org/stdlib-2.7.2/libdoc/optparse/rdoc/OptionParser.html

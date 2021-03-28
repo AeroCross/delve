@@ -42,7 +42,7 @@ If this project needs to be run under Windows, using the [Windows Subsystem for 
 If you're using a Unix-like system, you probably have Ruby installed. To verify:
 
 ```bash
-❯ ruby -v
+ruby -v
 ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin19]
 ```
 
@@ -164,7 +164,7 @@ You can see different use cases below, along with their expected outcomes.
 │  last_login_at    │  2012-12-29T07:59:56 -11:00                       │
 │  email            │  sallyhammond@flotonic.com                        │
 │  phone            │  8144-293-283                                     │
-│  signature        │  Don't Worry Be Happy!                            │
+│  signature        │  Dont Worry Be Happy!                             │
 │  organization_id  │  110                                              │
 │  tags             │  ["Bonanza", "Balm", "Fulford", "Austinburg"]     │
 │  suspended        │  false                                            │
@@ -314,7 +314,7 @@ Tickets
   ```
 </details>
 
-**NOTE**: Associations will [only be shown on the equivalent of primary keys](./DESIGN.md#why-provide-associations-only-on-primary-keys?).
+**NOTE**: Associations will [only be shown on the equivalent of primary keys](./DESIGN.md#why-provide-associations-only-on-primary-keys).
 
 <details>
   <summary>Search for a field without associations</summary>
@@ -338,7 +338,7 @@ Tickets
 │  last_login_at    │  2012-12-29T07:59:56 -11:00                       │
 │  email            │  sallyhammond@flotonic.com                        │
 │  phone            │  8144-293-283                                     │
-│  signature        │  Don't Worry Be Happy!                            │
+│  signature        │  Dont Worry Be Happy!                             │
 │  organization_id  │  110                                              │
 │  tags             │  ["Bonanza", "Balm", "Fulford", "Austinburg"]     │
 │  suspended        │  false                                            │
@@ -371,7 +371,7 @@ bundle exec rspec
   <summary>Expected results</summary>
 
   ```bash
-  ❯ rspec
+  rspec
 
 CLI::Fields
   #call
