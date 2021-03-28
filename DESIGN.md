@@ -44,7 +44,8 @@ delve search users email "byersestrada@flotonic.com" -r | jsonpp > user.json && 
 
 (Please don't actually do this if you're dealing with PII or a GDPR data portability request!)
 
-The possibilities are, virtually, endless.
+This also allows you to use this program through `cron`, or CI, be invoked by other GUI or CLI applications and use the
+result, among many other things. The possibilities are, virtually, endless.
 
 ## Why Ruby 2, and not 3?
 
