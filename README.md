@@ -314,7 +314,7 @@ Tickets
   ```
 </details>
 
-**NOTE**: Associations will [only be shown on the equivalent of primary keys](./DESIGN.md#why-provide-associations-only-on-primary-keys?).
+**NOTE**: Associations will [only be shown on the equivalent of primary keys](./DESIGN.md#why-provide-associations-only-on-primary-keys).
 
 <details>
   <summary>Search for a field without associations</summary>
