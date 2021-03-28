@@ -157,10 +157,7 @@ for reviewers to be with me throughout the journey of developing the application
 
 I **loved** [Brandland](https://brandland.zendesk.com/). I am a sucker for design systems, so I thought of giving it a go.
 
-The logo is meant to represent two interconnected things:
-
-1. The left and right shapes: a pickaxe (the rightmost part is the axe bit, the leftmost is the pick bit)
-2. The space in the middle: a mining shaft, where you _delve_ into
+The logo is meant to resemble a a pickaxe (the leftmost is the pick bit, the rightmost part is the axe bit).
 
 I couldn't find a product that uses [Daphne](https://brandland.zendesk.com/color) (#CE9FB7) in their logo so I thought
 that would be the a good choice.

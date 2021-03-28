@@ -1,12 +1,8 @@
-<div style="text-align:center">
-  <img src="public/logo.png" width="320" />
+<img src="public/logo.png" width="320" />
+<br />
+_By Zendesk_
 
-  By Zendesk
-
-  _Dig deep into data_
-  
-  ---
-</div>
+------
 
 ## Design Principles
 
